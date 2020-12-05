@@ -13,30 +13,31 @@ public class Main {
 
     public static int questionTwo(int[] array)
     {
-        int tempSum, sum = array[0];
-        int ptr_i = 0, ptr_j = 1;
+        int sum = array[0], tempSum = 0;
+        int start = 0, ptr_s = 0, end = 0;
 
         for (int i = 0; i < array.length; i++)
         {
-            tempSum = array[i];
+            if (tempSum <= 0){
+                ptr_s = i;
+                tempSum = array[i];
+            } else {
+                tempSum += array[i];
+            }
 
-            for (int j = i + 1; j < array.length; j++)
-            {
-                tempSum += array[j];
-                if (tempSum > sum)
-                {
-                    sum = tempSum;
-                    ptr_i = i;
-                    ptr_j = j;
-                }
+            if (tempSum > sum){
+                sum = tempSum;
+                start = ptr_s;
+                end = i + 1;
             }
         }
-        int[] sequence = new int[ptr_j - ptr_i + 1];
+        int[] sequence = new int[end - start];
         for (int m = 0; m < sequence.length; m++){
-            sequence[m] = array[ptr_i + m];
+            sequence[m] = array[start + m];
         }
 
         System.out.println("Sum Sequence: " + Arrays.toString(sequence));
+
         return sum;
     }
 }
