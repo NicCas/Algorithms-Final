@@ -5,12 +5,12 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("---------- Question 2 ----------");
         int [] a = {2, -8, 3, -2, 4, -10};
-        System.out.println("Sum: " + questionTwo(a));
+        System.out.println("Sum: " + findMaxSequence(a));
 
         System.out.println();
         System.out.println("---------- Question 3 ----------");
-        
-         BinaryTree compareTree = new BinaryTree();
+
+        BinaryTree compareTree = new BinaryTree();
 
         compareTree.rootContainer = new Node (100);
         compareTree.rootContainer.l = new Node (60);
@@ -47,9 +47,36 @@ public class Main {
         else
             System.out.println("Not a Subtree");
 
+
+        System.out.println();
+        System.out.println("---------- Question 4 ----------");
+
+        Matrix maxSumMatrix = new Matrix();
+
+        int[][] mat = { { 1, 1, 1, 1, 1 },
+                { -2, -2, 2, 2, -2 },
+                { -3, -8, 6, -10, 3 },
+                { 4, 4, -4, 4, 4 },
+                { -5, 5, 5, -5, 5 } };
+
+        System.out.println("The Matrix: ");
+        for (int i = 0; i < mat.length; i++)
+        {
+            System.out.print("[ ");
+
+            for (int j = 0; j < mat[0].length; j++)
+                System.out.print(mat[i][j] + " ");
+
+            System.out.println("]");
+        }
+        System.out.println();
+
+        System.out.println("The Greatest Sum: ");
+        System.out.println(maxSumMatrix.findSumMatrix(mat));
+
     }
 
-    public static int questionTwo(int[] array)
+    public static int findMaxSequence(int[] array)
     {
         int sum = array[0], tempSum = 0;
         int start = 0, ptr_s = 0, end = 0;
